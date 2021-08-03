@@ -12,7 +12,7 @@ print("-----------------------------------------------------------------------")
 # Taking user input the determine the number of lists to search
 number = int(input("Number of lists to search: "))
 print("-----------------------------------------------------------------------")
-watched = [] # Initializing list to put all shows the user watched
+watched = set() # Initializing set to put all shows the user watched
 finder = re.compile(r"(anime_title&quot;:&quot;)([^;]+)(&quot)") # Regular expression to match names of shows in the url given by user
 
 for i in range(number):
@@ -23,9 +23,7 @@ for i in range(number):
     s = a.read().decode("utf-8") # Decoding it in utf-8 format
     a.close() # Closing url
     for i in re.findall(finder, s): # Adding the watched shows from the url
-        watched.append(i[1])
-
-watched = list(dict.fromkeys(watched)) # Removing duplicate elements from the list
+        watched.add(i[1])
 
 b = urllib.request.urlopen(input("Link to the voice actor's page: ")) # Opening url (voice actor)
 

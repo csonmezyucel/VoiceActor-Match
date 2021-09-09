@@ -29,14 +29,13 @@ b = urllib.request.urlopen(input("Link to the voice actor's page: ")) # Opening 
 
 z = b.read().decode("utf-8") # Decoing it in utf-8 format
 b.close() # Closing url
-z = z[0:z.find("More</a>Top Anime")] # Removing the extra part of the string
 
 print("-----------------------------------------------------------------------")
 print("Matching Roles: ")
 print("----------------")
 
 for i in watched: # Printing out matches
-    if z.find(">"+i+"</a><div") != -1:
+    if z.find("js-people-title\">"+i+"</a></div>") != -1:
         print("\t" + i)
 
 print("-----------------------------------------------------------------------")

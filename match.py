@@ -27,7 +27,7 @@ for i in range(number):
 
 b = urllib.request.urlopen(input("Link to the voice actor's page: ")) # Opening url (voice actor)
 
-z = b.read().decode("utf-8") # Decoing it in utf-8 format
+z = b.read().decode("utf-8") # Decoding it in utf-8 format
 b.close() # Closing url
 
 print("-----------------------------------------------------------------------")

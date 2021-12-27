@@ -34,8 +34,18 @@ print("-----------------------------------------------------------------------")
 print("Matching Roles: ")
 print("----------------")
 
-for i in watched: # Printing out matches
-    if z.find("js-people-title\">"+i+"</a></div>") != -1:
-        print("\t" + i)
+
+acted = set() # Set to store shows the actor performed in
+
+finder = re.compile(r"(js-people-title\">)([^;]+)(</a></div>)") # Regular expression to find shows the actor performed in
+for el in re.findall(finder, z):
+    acted.add(el[1])
+
+acted = list(acted) # Casting the set onto a list
+acted.sort() # Sorting the list
+
+for show in acted: # Printing out matches
+    if show in watched:
+        print("\t" + show)
 
 print("-----------------------------------------------------------------------")
